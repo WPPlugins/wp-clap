@@ -264,10 +264,18 @@ function create_clap($args = '', $post_id = 0) {
 	}
 	
 	if ($claps) {
-	
+
 		$html .= '<div class="wp_clap_clappers">';
 		
+		/* BEGIN MOD fix display sum: only display the sum of all claps, no matter how many unique users */
+		$distict_clappers = 0;
 		foreach( $claps as $key => $clap ) {
+			if ($args['d_show_only_claps_sum'] == true) {
+				$clap['claps'] = $clap_f;
+				$distict_clappers++;
+				if ($distict_clappers > 1) { break; }
+			}
+			/* END MOD fix display sums */
 		
 			$tmp = str_replace(array("\r\n", "\n", "\r"), '', $args['clp_html']);
 			
