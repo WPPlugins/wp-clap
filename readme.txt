@@ -3,8 +3,8 @@ Contributors: Ariagle
 Donate link:http://blog.lolily.com/
 Tags: AJAX, Comments, Clap
 Requires at least: 2.7
-Tested up to: 2.8.3
-Stable tag: 1.0
+Tested up to: 3.0.1
+Stable tag: 1.5
 
 == Description ==
 
@@ -22,6 +22,7 @@ WP-Clap will creat a clap area after your post. Just like the comment area, your
 * Image clap link
 * Custom clap text
 * Custom HTML notice
+* Auto insert into post and excerpt
 
 **equires Version:**
 
@@ -32,13 +33,15 @@ I don’t know whether WP-Clap can work at WP 2.5 or lower, but you can have a t
 * US English/en_US (default)
 * 简体中文/zh_CN (translate by [Ariagle](http://blog.lolily.com/))
 * 日本語/ja_JP (translate by [晓晓](http://xiaolife.com/))
+* Dutch/nl_NL (translate by [Marcel](http://blog.bokhorst.biz/))
 	
 == Installation ==
 
 1. Unzip archive to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Go to 'Setting->WP-Clap', and change the setting
-4. In your 'single.php' file add the following line:
+4. If you Check the options of the 'Display', you do not need to pay attention to the following content
+5. (If you uncheck the above options) In your 'single.php' file add the following line:
 ****
 
 	<?php if(function_exists('wp_clap')) { wp_clap(); } ?>
@@ -48,7 +51,7 @@ You can use the following functions in 'index.php' to show how many claps there 
 
 	<?php if(function_exists('get_wp_claps')) { get_wp_claps(zero, one, more, mode, link, echo, post_id); } ?>
 	
-**Parameters:**
+**Parameters of get_wp_claps():**
 
     NAME            TYPE       DESCRIPTION                                           DEFAULT      VERSIONS
 	zero			string     Text to display when there are no claps.              'No Claps'   1.0
@@ -79,15 +82,43 @@ As the function get_wp_claps(), generally you do not neet to reset the $link, $e
 
 == Changelog ==
 
-****
-    VERSION	  DATE         CHANGES
-	1.0	      2009/08/14   New plugin Publish.
+= 2010/09/12 =
+* Version 1.5
+* Check for WP3.0, MultiSite is supported now.
+* Add a new option that you can choose which page(s) do not display claps.
+* Edit default style.
+
+= 2010/04/29 =
+* Version 1.4
+* Custom HTML supported.
+
+= 2009/10/11 =
+* Version 1.3
+* Fix a bug.
+* Now only administrator can edit the setting page.
+
+= 2009/08/25 =
+* Version 1.2
+* Fix a bug.
+* Add new options.
+
+= 2009/08/16 =
+* Version 1.1
+* Auto insert into post.
+
+= 2009/08/14 =
+* Version 1.0
+* New plugin Publish.
 
 == Frequently Asked Questions == 
 
 = How to display the Clap Area? =
 
-Add the following line to where you like to display it():
+There are 2 ways to display the clap area:
+
+1. In the 'Setting->WP-Clap' page, check the options of 'Display' and the clap area will be inserted into where you want.
+
+2. Add the following line to where you like to display it:
 ****
 	<?php if(function_exists('wp_clap')) { wp_clap(); } ?>
 	
@@ -98,7 +129,11 @@ For example, in the 'single.php' file, you can add it before
 
 = How to display the number of claps in the index? =
 
-You can use the function get_wp_claps(). Go to Installation to learn the parameters of this function.
+There are 2 ways to display the number of claps:
+
+1. In the 'Setting->WP-Clap' page, check the option 'Auto insert frequency into post and excerpt' of 'Display', and the number of claps will be inserted into the right top of the post and excerpt. Posts can be also clapped here.
+
+2. You can use the function get_wp_claps(). Go to Installation to learn the parameters of this function.
 
 = Widget =
 
@@ -110,4 +145,4 @@ We can not make sure that the WP-Clap's default style suits for everyone's theme
 
 == Screenshots ==
 
-Go to [Plugin Home Page](http://blog.lolily.com/wordpress-plugin-wp-clap.html) to see the screenshots.
+Go to [Plugin Home Page](http://blog.lolily.com/wordpress-plugin-wp-clap.html#screenshots) to see the screenshots.
